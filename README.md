@@ -99,6 +99,14 @@ Este modelo se divide en 4 capas principales. Su filosofía es la simplicidad: a
 
 
 
+| \*\*Características\*\* | \*\*Modelo OSI (Teórico)\*\* | \*\*Modelo TCP/IP (Práctico)\*\* |
+
+|:------------------:|:------------------------:|:----------------------------:|
+
+| Estructura         | 7 Capas detalladas       | 4 capas simplificadas        |
+
+| Enfoque            | Se centra en qué debe hacer cada capa | Se centra en cómo conectar sistemas |
+
 
 
 | \*\*Características\*\* | \*\*modelo OSI (Teórico)\*\* | \*\*Modelo TCP/IP (Práctico)\*\* |
