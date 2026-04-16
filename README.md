@@ -99,20 +99,16 @@ Este modelo se divide en 4 capas principales. Su filosofía es la simplicidad: a
 
 
 
-| \*\*Características\*\* | \*\*Modelo OSI (Teórico)\*\* | \*\*Modelo TCP/IP (Práctico)\*\* |
+| Características | Modelo OSI (Teórico) | Modelo TCP/IP (Práctico) |
 |:------------------:|:------------------------:|:----------------------------:|
-| Estructura         | 7 Capas detalladas       | 4 capas simplificadas        |
-| Enfoque            | Se centra en qué debe hacer cada capa | Se centra en cómo conectar sistemas |
+| \*\*Estructura\*\* | 7 Capas detalladas       | 4 capas simplificadas        |
+| \*\*Enfoque\*\* | Se centra en qué debe hacer cada capa | Se centra en cómo conectar sistemas (modelo de protocolos)|
+|\*\*Uso\*\*| Excelencia para enseñanza y resolucion de problemas técnicos| Es el estándar mundial en el que se basa el funcionamiento de internet|
+|\*\*Flexibilidad\*\*| Estricto : cada función tiene su lugar exacto | Flexible: una misma capa (Aplicación) maneja todo el software|
+|\*\*Desarrollo\*\* | Fue creado por la ISO después de muchos protocolos|
 
 
 
-| \*\*Características\*\* | \*\*modelo OSI (Teórico)\*\* | \*\*Modelo TCP/IP (Práctico)\*\* |
-
-|--------------------|-------------------------|----------------------------|
-
-| Estructura | 7 Capas detalladas | 4 capas simplificadas |
-
-| Enfoque | Se centra en qué debe hacer cada capa | Se centra en cómo conectar sistemas |
 
 
 
