@@ -1,178 +1,222 @@
-\# 🌐 Configuración de VLANs en Router (Router-on-a-Stick)
-
-
+# 🌐 CONFIGURACIÓN DE VLANs EN ROUTER (Router-on-a-Stick)
 
 <p align="center">
-
-&#x20; <img src="https://img.shields.io/badge/Networking-Cisco-blue?style=for-the-badge">
-
-&#x20; <img src="https://img.shields.io/badge/VLAN-802.1Q-orange?style=for-the-badge">
-
-&#x20; <img src="https://img.shields.io/badge/Level-Professional-success?style=for-the-badge">
-
+  <img src="https://img.shields.io/badge/Networking-Cisco-blue?style=for-the-badge">
+  <img src="https://img.shields.io/badge/VLAN-802.1Q-orange?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Level-Professional-success?style=for-the-badge">
 </p>
 
+---
 
+## 📑 Tabla de Contenido
 
-\---
+- 📌 Introducción
+- 🧠 Conceptos Clave
+- 🏗️ Arquitectura
+- 🖥️ Equipos
+- ⚙️ Configuración Paso a Paso
+- 🧪 Validación
+- 🚨 Errores Comunes
+- 🎯 Conclusión
 
+---
 
+## 📌 Introducción
 
-\## 📑 Tabla de Contenido
+Este proyecto muestra la implementación de segmentación de red mediante VLANs usando un router y un switch.
 
+Se configura desde cero:
+- Nombre del equipo
+- Interfaces
+- VLANs
+- Subinterfaces
+- Direccionamiento IP
+- Pruebas de conectividad (PING)
 
+---
 
-\- \[📌 Introducción](#-introducción)
+## 🧠 Modelo OSI
 
-\- \[🧠 Conceptos Clave](#-conceptos-clave)
+![OSI](imagenes/imagen%20(8).jpeg)
 
-\- \[🏗️ Arquitectura](#️-arquitectura)
+El modelo OSI divide la red en 7 capas:
 
-\- \[⚙️ Configuración Paso a Paso](#️-configuración-paso-a-paso)
+- Física
+- Enlace de datos
+- Red
+- Transporte
+- Sesión
+- Presentación
+- Aplicación
 
-\- \[🧪 Validación](#-validación)
+---
 
-\- \[🚨 Errores Comunes](#-errores-comunes)
+## 🧠 Modelo TCP/IP
 
-\- \[🎯 Conclusión](#-conclusión)
+![TCP/IP](imagenes/imagen%20(8).jpeg)
 
+Modelo práctico usado en Internet:
 
+- Aplicación
+- Transporte
+- Internet
+- Acceso a red
 
-\---
+---
 
+## 🏗️ Arquitectura
 
+- VLAN 1 → 192.168.1.0/24  
+- VLAN 5 → 192.168.5.0/24  
 
-\## 📌 Introducción
+- Interfaz: `GigabitEthernet0/0/0`
 
+- Subinterfaces:
+  - G0/0/0.1 → VLAN 1
+  - G0/0/0.5 → VLAN 5
 
+---
 
-Este proyecto muestra la implementación de \*\*segmentación de red mediante VLANs\*\* usando un router y swich, donde se lleva acabo inicialmente con las referencias de Router cisco 8200 y Swich calister 1000 series.
+## 🖥️ Equipos
 
+![Rack](Multimedia.jpeg)
+![Router](Multimedia%20(2).jpeg)
+![Switch](Multimedia%20(3).jpeg)
+![Switch frontal](Multimedia%20(4).jpeg)
 
-Durante este proceso se a va aprender la configurar ambos elementos desde el emulador de terminal \*\*PuTTY\*\*, que permite a los administradores y programadores gestionar servidores Linux, corregir transferencias de archivos, además, se va a explicar conceptos básicos para el entendimiento de la configuración, funcionamiento de los elementos anteriormente mencionados.  
+---
 
-Abordando, en los elementos de trabajo, un router es un dispositivo de red de alto rendimiento diseñado para conectar múltiples redes dirigir el trafico de datos entres ellas y gestionar el acceso a internet. Entre las características y funcionalidades principales son la conectividad de red, enrutamiento inteligente, seguridad, protocolos.
+# ⚙️ CONFIGURACIÓN PASO A PASO
 
-Actualmente en el mercado cisco ofrece varios tipos de router, entre ellos están, los principales (Core), perimetrales (Edge) y de distribución.
+---
 
+## 🔹 1. Configuración del Router
 
+---
 
-* \*\*Router principal\*\*: Proporciona el máximos ancho de banda para conectar otros routers o switches.
-* \*\*Router perimetral\*\*: Soporta protocolos de enrutamiento tanto estáticos como dinamicos (como RIP, OSPF, EIGRP, BGP).
-* \*\*Router de distribución\*\*: Recibe datos del borde y los distribuye a la red local. 
+### 🟢 Paso 1: Entrar a configuración
 
+Primero se accede al modo privilegiado (enable) y luego al modo de configuración global.
+Aquí es donde se pueden hacer cambios en el dispositivo.
 
-Dando un acercamiento a redes hay que tener en cuenta que se manejan varios niveles inicial en el modelos OSI (\*\*Open Systems Interconnection\*\*) es un marco conceptual estandarizado por la ISO en 1984, que divide la comunicación de red en siete capas abstractas, donde facilita la interoperabilidad entre distintos sistemas, al definir funciones especificas para la tranasmición de datos desde la conexión física hasta la aplicacion de usuario.
+enable
+configure terminal
 
 
 
-\### Modelo OSI
+### 🟢 Paso 2: Nombre del router
 
-* \*\*Capa Física\*\*: define las especificaciones eléctricas y mecánicas de la conexión, como cables, conectores y niveles de voltaje. Transmite los datos como un flujo de bits sin procesar.
-* \*\*Capa de enlace de datos\*\*: proporciona la transferencia de datos entre dos nodos conectados directamente en la misma red física. Organiza los datos en \*\*Tramas\*\*  y maneja el direccionamiento físico (\*\*MAC\*\*).
-* \*\*Capa de red\*\*: se encarga del enrutamiento de los datos. Determina la mejor ruta física para que los datos lleguen a su destino a través de diferentes redes (protocolo \*\*IP\*\*)
-* \*\*Capa de Transporte\*\*: responsable de la transferencia de datos extremos a extremo. Incluye el control de errores y flujo para garantizar que los datos lleguen correctamente (Protocolos \*\*TPC y UDP\*\*).
-* \*\*Capa de sesión\*\*: Administra el inicio, la gestión y el cierre de las sesiones de comunicación entre aplicaciones. Contola el diálogo entre los dos nodos. 
-* \*\*Capa de presentación\*\*: se encarga de traducir, cifrar y comprimir los datos para que sean comprensibles para la capa de aplicación. Asegura que los dispositivos puedan enternderse aunque usen diferentes formatos de datos.
-* \*\*Capa de aplicación\*\*: es la única capa que interactúa directamente con los datos del usuario y recibir información del usuario. Proporciona protocolos que permiten a las aplicaciones de software y recibir información (Navegadores web \*\*HTTPS\*\*)
+Se cambia el nombre del equipo para identificarlo fácilmente dentro de la red.
+Esto es importante en entornos reales donde hay muchos dispositivos.
 
+hostname Raticas
 
 
-\### Modelo TCP/IP
+### 🟢 Paso 3:Seleccionar la interfaz 
 
+Se accede a la interfaz física del router que se va a usar para conectar con el switch.
+Esta interfaz será la base para crear las subinterfaces.
 
-El modelo TCP/IP es el "lenguaje" real de Internet. A diferencia del OSI, que es un marco teórico educativo, el TCP/IP fue diseñado para ser práctico y robusto, permitiendo que computadoras de todo el mundo se conecten sin importar su hardware.
+interface GigabitEthernet0/0/0
 
+interface GigabitEthernet0/0/0.1
+encapsulation dot1Q 1
+ip address 192.168.1.1 255.255.255.0
+no shutdown
 
 
-Este modelo se divide en 4 capas principales. Su filosofía es la simplicidad: agrupa funciones para que el procesamiento sea más rápido.
+### 🟢 Paso 4: Crear subinterfaces
 
+Una subinterfaz es una interfaz virtual dentro de una interfaz física.
+Se utiliza para manejar múltiples VLANs en un solo puerto (Router-on-a-Stick).
 
+**VLAN 1**
 
-* \*\*Capa de Aplicación\*\*: Combina las capas 5, 6 y 7 del modelo OSI. Aquí residen los protocolos que usamos a diario como \*\*HTTP\*\* (web), \*\*SMTP\*\* (correo) y \*\*FTP\*\* (archivos). Se comunica directamente con los procesos de software.
-* \*\*Capa de Transporte\*\*: Similar a la capa 4 de OSI. Se encarga de la comunicación host a host. Sus dos protagonistas son:
+interface GigabitEthernet0/0/0.1
+encapsulation dot1Q 1
+ip address 192.168.1.1 255.255.255.0
+no shutdown
 
-  * \*\*TCP\*\*: Fiable, garantiza que los datos lleguen completos.
-  * \*\*UDP\*\*: Rápido, pero no garantiza la entrega (ideal para video en vivo).
-* \*\*Capa de Internet\*\*: Equivale a la capa de Red de OSI. Su función principal es el direccionamiento IP y el enrutamiento. Aquí es donde se decide qué camino toman los paquetes para llegar a su destino.
-* \*\*Capa de Acceso a la Red\*\*: Une las capas 1 y 2 de OSI. Define cómo se envían físicamente los datos a través de los medios (cables, fibra, Wi-Fi).
+**VLAN 5**
 
+interface GigabitEthernet0/0/0.5
+encapsulation dot1Q 5
+ip address 192.168.5.1 255.255.255.0
+no shutdown
 
 
-| Características | Modelo OSI (Teórico) | Modelo TCP/IP (Práctico) |
-|:------------------:|:------------------------:|:----------------------------:|
-| \*\*Estructura\*\* | 7 Capas detalladas       | 4 capas simplificadas        |
-| \*\*Enfoque\*\* | Se centra en qué debe hacer cada capa | Se centra en cómo conectar sistemas (modelo de protocolos)|
-|\*\*Uso\*\*| Excelencia para enseñanza y resolucion de problemas técnicos| Es el estándar mundial en el que se basa el funcionamiento de internet|
-|\*\*Flexibilidad\*\*| Estricto : cada función tiene su lugar exacto | Flexible: una misma capa (Aplicación) maneja todo el software|
-|\*\*Desarrollo\*\* | Fue creado por la ISO después de muchos protocolos|
+### 🟢 Paso 5: Activar interfaz
 
+Se indica qué VLAN va a manejar esa subinterfaz.
+El protocolo 802.1Q permite etiquetar el tráfico para identificar a qué VLAN pertenece.
 
+interface GigabitEthernet0/0/0
+no shutdown
 
+Por defecto, las interfaces están apagadas.
+Este comando las activa para que puedan transmitir datos.
 
 
+### 🟢 Paso 6: Guardar configuración
 
+Se asigna la IP que será la puerta de enlace (gateway) para esa VLAN.
+Todos los dispositivos de esa VLAN usarán esta IP para comunicarse con otras redes.
 
-Se utiliza el protocolo \*\*IEEE 802.1Q (dot1Q)\*\* para permitir que múltiples VLANs viajen a través de una sola interfaz física, utilizando \*\*subinterfaces\*\*.
 
+## 2. Configuración del Switch
 
+Se crean las VLANs dentro del switch.
+Esto permite separar los dispositivos en diferentes redes lógicas.
 
-\---
 
+###🟢 Crear VLANs
 
+vlan 1
+name VLAN_1
 
-\## 🧠 Conceptos Clave
+vlan 5
+name VLAN_5
 
 
+###🟢 Puertos de acceso
 
-| Concepto | Descripción |
+Se define a qué VLAN pertenece cada puerto del switch.
+Los dispositivos conectados a ese puerto estarán en esa VLAN.
 
-|----------|------------|
+interface fastEthernet0/1
+switchport mode access
+switchport access vlan 1
+interface fastEthernet0/2
+switchport mode access
+switchport access vlan 5
 
-| VLAN | Segmentación lógica de red |
 
-| Subinterfaces | Interfaces virtuales dentro de una física |
+###🟢 Configurar TRUNK
 
-| dot1Q | Protocolo de etiquetado VLAN |
 
-| Trunk | Enlace que transporta múltiples VLANs |
+El trunk permite que varias VLANs viajen por un solo cable hacia el router.
+Es esencial para el Router-on-a-Stick.
 
-| Router-on-a-Stick | Enrutamiento entre VLANs con un solo puerto |
 
+interface gigabitEthernet0/1
+switchport mode trunk
+switchport trunk allowed vlan 1,5
+🧪 VALIDACIÓN
+- Ver VLANs
+show vlans
+-  Ping
 
 
-\---
+Permite comprobar que las VLANs están creadas correctamente y activas.
 
+ping ip 192.168.1.1
+✔ Resultado
+Success rate is 100 percent (5/5)
 
-
-\## 🏗️ Arquitectura
-
-
-
-* VLAN 1 → 192.168.1.0/24
-* VLAN 5 → 192.168.5.0/24
-* Interfaz física: `GigabitEthernet0/0/0`
-* Subinterfaces configuradas para cada VLAN
-
-
-
-\---
-
-
-
-\## ⚙️ Configuración Paso a Paso
-
-
-
-\---
-
-
-
-\### 🔹 Paso 1 – Guardar configuración
-
-
-
-```bash
+El ping verifica si hay comunicación entre dispositivos.
+Si responde correctamente, significa que la configuración es funcional.
 
 write memory
 
+Guarda todos los cambios realizados.
+Si no se guarda, se perderán al reiniciar el equipo.
