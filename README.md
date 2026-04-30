@@ -23,44 +23,90 @@
 
 ## 📌 Introducción
 
-Este proyecto muestra la implementación de segmentación de red mediante VLANs usando un router y un switch.
+Este proyecto muestra la implementación de **segmentación de red mediante VLANs** usando un router y swich, donde se lleva acabo inicialmente con las referencias de Router cisco 8200 y Swich calister 1000 series.
 
-Se configura desde cero:
-- Nombre del equipo
-- Interfaces
-- VLANs
-- Subinterfaces
-- Direccionamiento IP
-- Pruebas de conectividad (PING)
+Durante este proceso se a va aprender la configurar ambos elementos desde el emulador de terminal **PuTTY**, que permite a los administradores y programadores gestionar servidores Linux, corregir transferencias de archivos, además, se va a explicar conceptos básicos para el entendimiento de la configuración, funcionamiento de los elementos anteriormente mencionados.
 
----
+Abordando, en los elementos de trabajo, un router es un dispositivo de red de alto rendimiento diseñado para conectar múltiples redes dirigir el trafico de datos entres ellas y gestionar el acceso a internet. Entre las características y funcionalidades principales son la conectividad de red, enrutamiento inteligente, seguridad, protocolos.
+
+Actualmente en el mercado cisco ofrece varios tipos de router, entre ellos están, los principales (Core), perimetrales (Edge) y de distribución.
+
+
+
+**Router principal**: Proporciona el máximos ancho de banda para conectar otros routers o switches.
+
+**Router perimetral**: Soporta protocolos de enrutamiento tanto estáticos como dinamicos (como RIP, OSPF, EIGRP, BGP).
+
+**Router de distribución**: Recibe datos del borde y los distribuye a la red local.
+
+Dando un acercamiento a redes hay que tener en cuenta que se manejan varios niveles inicial en el modelos OSI (**Open Systems Interconnection**) es un marco conceptual estandarizado por la ISO en 1984, que divide la comunicación de red en siete capas abstractas, donde facilita la interoperabilidad entre distintos sistemas, al definir funciones especificas para la tranasmición de datos desde la conexión física hasta la aplicacion de usuario.
+
+
+
+
 
 ## 🧠 Modelo OSI
 
-![OSI](imagenes/imagen%20(8).jpeg)
+![Paso 2](https://github.com/Sergio-116/PROYECTO_LINUX/blob/f34cd6e64894879cd176013e319eaaf4a492f979/IMAGENES/02_ArchivoLogs.png)
 
 El modelo OSI divide la red en 7 capas:
 
-- Física
-- Enlace de datos
-- Red
-- Transporte
-- Sesión
-- Presentación
-- Aplicación
+**Capa Física**: define las especificaciones eléctricas y mecánicas de la conexión, como cables, conectores y niveles de voltaje. Transmite los datos como un flujo de bits sin procesar.
+
+**Capa de enlace de datos**: proporciona la transferencia de datos entre dos nodos conectados directamente en la misma red física. Organiza los datos en **Tramas**  y maneja el direccionamiento físico (**MAC**).
+
+**Capa de red**: se encarga del enrutamiento de los datos. Determina la mejor ruta física para que los datos lleguen a su destino a través de diferentes redes (protocolo **IP**)
+
+**Capa de Transporte**: responsable de la transferencia de datos extremos a extremo. Incluye el control de errores y flujo para garantizar que los datos lleguen correctamente (Protocolos **TPC y UDP**).
+
+**Capa de sesión**: Administra el inicio, la gestión y el cierre de las sesiones de comunicación entre aplicaciones. Contola el diálogo entre los dos nodos.
+
+**Capa de presentación**: se encarga de traducir, cifrar y comprimir los datos para que sean comprensibles para la capa de aplicación. Asegura que los dispositivos puedan enternderse aunque usen diferentes formatos de datos.
+
+**Capa de aplicación**: es la única capa que interactúa directamente con los datos del usuario y recibir información del usuario. Proporciona protocolos que permiten a las aplicaciones de software y recibir información (Navegadores web **HTTPS**)
 
 ---
 
 ## 🧠 Modelo TCP/IP
 
-![TCP/IP](imagenes/imagen%20(8).jpeg)
+![Paso 2](https://github.com/Sergio-116/PROYECTO_LINUX/blob/f34cd6e64894879cd176013e319eaaf4a492f979/IMAGENES/02_ArchivoLogs.png)
 
-Modelo práctico usado en Internet:
+El modelo TCP/IP es el marco conceptual básico de Internet, desarrollado en los años 70 para permitir la comunicación fiable entre equipos. Se organiza en cuatro capas: Aplicación, Transporte, Internet y Acceso a la Red. Define cómo se formatean, direccionan, transmiten y reciben los datos extremo a extremo.
 
-- Aplicación
-- Transporte
-- Internet
-- Acceso a red
+**3. Capa de Aplicación**
+
+Es el nivel más alto, el que tú ves. Su función es proporcionar la interfaz entre el software (tu navegador, app de correo, etc.) y la red.
+
+- Para qué funciona: Define los protocolos que usan las aplicaciones para intercambiar datos. Por ejemplo, cuando escribes una URL, el protocolo HTTP/HTTPS entra en acción; si envías un correo, usas SMTP.
+
+- Nota : Aquí los datos aún no tienen formato de red, son simplemente la información pura (el texto de un mensaje o el código de una web).
+
+**2. Capa de Transporte** 
+
+Aquí es donde se decide cómo va a viajar la información. Su función principal es la comunicación extremo a extremo y el control de flujo.
+
+- Para qué funciona: Divide los datos de la aplicación en trozos más pequeños llamados segmentos. Utiliza dos protocolos principales:
+
+- **TCP**: Es el "mensajero responsable". Verifica que todos los datos lleguen, en orden y sin errores. Si algo se pierde, lo pide de nuevo.
+
+- **UDP**: Es el "mensajero veloz". Envía los datos sin verificar si llegaron. Se usa para streaming o juegos online donde la velocidad importa más que un error mínimo.
+
+**3. Capa de Internet (o Red)**
+
+Esta capa es el "GPS" del modelo. Se encarga de que los paquetes sepan qué camino tomar para llegar a su destino.
+
+- **Para qué funciona**: Toma los segmentos de la capa de transporte y les añade la **dirección IP** de origen y de destino, convirtiéndolos en **paquetes**. El protocolo principal es el **IP**.
+
+- **Dato clave**: Aquí es donde trabajan los routers. Su trabajo es decidir cuál es la ruta más rápida a través de la enorme red de redes que es Internet.
+
+**4. Capa de Acceso a la Red (o Enlace)**
+
+Es la capa física. Se encarga de cómo los bits (0 y 1) se convierten en señales eléctricas, de radio o luz para viajar por un cable o por el aire.
+
+- **Para qué funciona** : Empaqueta los paquetes de internet en tramas que el hardware puede entender. Gestiona la dirección física de los dispositivos (la dirección MAC).
+
+Ejemplos: Aquí es donde operan el Ethernet (cable), el Wi-Fi y la fibra óptica.
+
 
 ---
 
