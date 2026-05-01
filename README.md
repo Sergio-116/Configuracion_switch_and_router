@@ -31,8 +31,19 @@ Abordando, en los elementos de trabajo, un router es un dispositivo de red de al
 
 Actualmente en el mercado cisco ofrece varios tipos de router, entre ellos están, los principales (Core), perimetrales (Edge) y de distribución.
 
+<details>
+<summary>Ver pasos</summary>
 
+![Paso 1](https://github.com/Sergio-116/Configuracion_switch_and_router/blob/f6b122a224cfe3c9d9eb78e4004f20beb92e005f/imagenes/Multimedia.jpeg)
+![Paso 1](https://github.com/Sergio-116/Configuracion_switch_and_router/blob/f6b122a224cfe3c9d9eb78e4004f20beb92e005f/imagenes/Multimedia%20(2).jpeg)
+![Paso 1](https://github.com/Sergio-116/Configuracion_switch_and_router/blob/f6b122a224cfe3c9d9eb78e4004f20beb92e005f/imagenes/Multimedia%20(3).jpeg)
+![Paso 1](https://github.com/Sergio-116/Configuracion_switch_and_router/blob/f6b122a224cfe3c9d9eb78e4004f20beb92e005f/imagenes/Multimedia%20(4).jpeg)
+![Paso 1](https://github.com/Sergio-116/Configuracion_switch_and_router/blob/f6b122a224cfe3c9d9eb78e4004f20beb92e005f/imagenes/Multimedia%20(5).jpeg)
+![Paso 1](https://github.com/Sergio-116/Configuracion_switch_and_router/blob/f6b122a224cfe3c9d9eb78e4004f20beb92e005f/imagenes/Multimedia%20(6).jpeg)
+![Paso 1](https://github.com/Sergio-116/Configuracion_switch_and_router/blob/f6b122a224cfe3c9d9eb78e4004f20beb92e005f/imagenes/Multimedia%20(8).jpeg)
+![Paso 1](https://github.com/Sergio-116/Configuracion_switch_and_router/blob/f6b122a224cfe3c9d9eb78e4004f20beb92e005f/imagenes/Multimedia%20(9).jpeg)
 
+</details>
 **Router principal**: Proporciona el máximos ancho de banda para conectar otros routers o switches.
 
 **Router perimetral**: Soporta protocolos de enrutamiento tanto estáticos como dinamicos (como RIP, OSPF, EIGRP, BGP).
@@ -111,6 +122,7 @@ Ejemplos: Aquí es donde operan el Ethernet (cable), el Wi-Fi y la fibra óptica
 ---
 
 ## 🏗️ Arquitectura
+
 
 - VLAN 1 → 192.168.1.0/24  
 - VLAN 5 → 192.168.5.0/24  
@@ -266,3 +278,9 @@ write memory
 
 Guarda todos los cambios realizados.
 Si no se guarda, se perderán al reiniciar el equipo.
+
+
+### 🟢 Varificación de **VLAN**
+
+En el este paso se va realizar verificación de la configuración de la red que se creo manteniendo la conectividad por medio de la **IP**
+
