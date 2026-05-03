@@ -270,9 +270,10 @@ Si no se guarda, se perderán al reiniciar el equipo.
 
 En el este paso se va realizar verificación de la configuración de la red que se creo manteniendo la conectividad por medio de la **IP**
 
+
 ![Paso 5](https://github.com/Sergio-116/Configuracion_switch_and_router/blob/fb368ce6332ca92d28b2d113dd887ab904f528e6/imagenes/Gif.ConfiguracionRedes.gif)
 
-
+En este paso colocamos la ip que le nombramos al swicth, la mascara y la puerta de enlace donde esta se van a ver ya que están en su mismo segmento de red, colocamos los DNS de Google y posteriormente realizamos un ping a swicth y al router y nos da ok.
 ---
 
 ###**Colaboradores**
