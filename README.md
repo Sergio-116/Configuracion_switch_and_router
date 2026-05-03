@@ -31,20 +31,7 @@ Abordando, en los elementos de trabajo, un router es un dispositivo de red de al
 
 Actualmente en el mercado cisco ofrece varios tipos de router, entre ellos están, los principales (Core), perimetrales (Edge) y de distribución.
 
-<details>
-<summary>Ver pasos</summary>
 
-![Paso 1](https://github.com/Sergio-116/Configuracion_switch_and_router/blob/f6b122a224cfe3c9d9eb78e4004f20beb92e005f/imagenes/Multimedia.jpeg)
-![Paso 1](https://github.com/Sergio-116/Configuracion_switch_and_router/blob/f6b122a224cfe3c9d9eb78e4004f20beb92e005f/imagenes/Multimedia%20(2).jpeg)
-![Paso 1](https://github.com/Sergio-116/Configuracion_switch_and_router/blob/f6b122a224cfe3c9d9eb78e4004f20beb92e005f/imagenes/Multimedia%20(3).jpeg)
-![Paso 1](https://github.com/Sergio-116/Configuracion_switch_and_router/blob/f6b122a224cfe3c9d9eb78e4004f20beb92e005f/imagenes/Multimedia%20(4).jpeg)
-![Paso 1](https://github.com/Sergio-116/Configuracion_switch_and_router/blob/f6b122a224cfe3c9d9eb78e4004f20beb92e005f/imagenes/Multimedia%20(5).jpeg)
-![Paso 1](https://github.com/Sergio-116/Configuracion_switch_and_router/blob/f6b122a224cfe3c9d9eb78e4004f20beb92e005f/imagenes/Multimedia%20(6).jpeg)
-![Paso 1](https://github.com/Sergio-116/Configuracion_switch_and_router/blob/f6b122a224cfe3c9d9eb78e4004f20beb92e005f/imagenes/Multimedia%20(8).jpeg)
-![Paso 1](https://github.com/Sergio-116/Configuracion_switch_and_router/blob/f6b122a224cfe3c9d9eb78e4004f20beb92e005f/imagenes/Multimedia%20(9).jpeg)
-
-</details>
-**Router principal**: Proporciona el máximos ancho de banda para conectar otros routers o switches.
 
 **Router perimetral**: Soporta protocolos de enrutamiento tanto estáticos como dinamicos (como RIP, OSPF, EIGRP, BGP).
 
@@ -54,11 +41,9 @@ Dando un acercamiento a redes hay que tener en cuenta que se manejan varios nive
 
 
 
-
-
 ## 🧠 Modelo OSI
 
-![Paso 2](https://github.com/Sergio-116/PROYECTO_LINUX/blob/f34cd6e64894879cd176013e319eaaf4a492f979/IMAGENES/02_ArchivoLogs.png)
+![Paso 2](https://github.com/Sergio-116/Configuracion_switch_and_router/blob/c43ed31840975eee00f67be5bf404b3be642a7f1/imagenes/imagen%20(8).jpeg)
 
 El modelo OSI divide la red en 7 capas:
 
@@ -80,7 +65,7 @@ El modelo OSI divide la red en 7 capas:
 
 ## 🧠 Modelo TCP/IP
 
-![Paso 2](https://github.com/Sergio-116/PROYECTO_LINUX/blob/f34cd6e64894879cd176013e319eaaf4a492f979/IMAGENES/02_ArchivoLogs.png)
+![Paso 3](https://github.com/Sergio-116/Configuracion_switch_and_router/blob/c43ed31840975eee00f67be5bf404b3be642a7f1/imagenes/imagen%20(9).jpeg)
 
 El modelo TCP/IP es el marco conceptual básico de Internet, desarrollado en los años 70 para permitir la comunicación fiable entre equipos. Se organiza en cuatro capas: Aplicación, Transporte, Internet y Acceso a la Red. Define cómo se formatean, direccionan, transmiten y reciben los datos extremo a extremo.
 
@@ -137,14 +122,15 @@ Ejemplos: Aquí es donde operan el Ethernet (cable), el Wi-Fi y la fibra óptica
 
 ## 🖥️ Equipos
 
-![Rack](Multimedia.jpeg)
-![Router](Multimedia%20(2).jpeg)
-![Switch](Multimedia%20(3).jpeg)
-![Switch frontal](Multimedia%20(4).jpeg)
+
+![Paso 1](https://github.com/Sergio-116/Configuracion_switch_and_router/blob/864633234fb39ae6a4f66776b361625041f57dae/imagenes/Torre.gif)
 
 ---
 
 # ⚙️ CONFIGURACIÓN PASO A PASO
+
+![Paso 4](https://github.com/Sergio-116/Configuracion_switch_and_router/blob/864633234fb39ae6a4f66776b361625041f57dae/imagenes/codigo.gif)
+
 
 ---
 
@@ -284,4 +270,4 @@ Si no se guarda, se perderán al reiniciar el equipo.
 
 En el este paso se va realizar verificación de la configuración de la red que se creo manteniendo la conectividad por medio de la **IP**
 
-![Paso 2](https://github.com/Sergio-116/Configuracion_switch_and_router/blob/fb368ce6332ca92d28b2d113dd887ab904f528e6/imagenes/Gif.ConfiguracionRedes.gif)
+![Paso 5](https://github.com/Sergio-116/Configuracion_switch_and_router/blob/fb368ce6332ca92d28b2d113dd887ab904f528e6/imagenes/Gif.ConfiguracionRedes.gif)
