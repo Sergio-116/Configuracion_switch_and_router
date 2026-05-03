@@ -271,3 +271,13 @@ Si no se guarda, se perderán al reiniciar el equipo.
 En el este paso se va realizar verificación de la configuración de la red que se creo manteniendo la conectividad por medio de la **IP**
 
 ![Paso 5](https://github.com/Sergio-116/Configuracion_switch_and_router/blob/fb368ce6332ca92d28b2d113dd887ab904f528e6/imagenes/Gif.ConfiguracionRedes.gif)
+
+
+---
+
+###**Colaboradores**
+
+1. David Santiago Prada Briceno
+2. Johann Andres Paez Garzón
+3. Sergio Esteban Quintana Mesa
+
